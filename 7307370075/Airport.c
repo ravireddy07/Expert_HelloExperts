@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
                 scanf("%s", &ThreeLetterWord_1);
 
                 //2. Call findAirport()
-                findAirport(ThreeLetterWord);
+                findAirport(ThreeLetterWord_1);
 
                 //3. If either the airport's latitude or longitude is -99999, that means the airport was not found. Print an appropriate error.
                 if() {
