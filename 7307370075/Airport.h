@@ -1,4 +1,4 @@
-#define MAX 100
+#define MAX 12
 #include<string.h>
 #include<stdio.h>
 
@@ -7,18 +7,6 @@
 
 //latitude 1° = 69 miles
 
-/*
-//------------------------------Function Declaration----------------------------------
-
-void findInRange(Airport airports[MAX], int length, Airport origin, int range, Airport output[MAX], int *resultsLength);   //void findInRange(Airport airports[MAX], int length, Airport origin, int range, Airport output[MAX], int *resultsLength)
-
-
-//------------------------------Function Initialization-------------------------------
-
-findInRange() {
-
-}
-*/
 int i=0;
 
 struct Airport {
@@ -26,7 +14,7 @@ struct Airport {
 	char name[50];
 	double Latitude;
 	double Longitude;
-}airports[MAX];
+}airports[MAX], output[MAX];
 	
 struct temp {
 	char tempCode[4];
@@ -100,7 +88,6 @@ void fillAirports(struct Airport airports[]) {
 	return;
 }
 
-//findAirport(Airport airports[MAX], int length, char code[4]); //Airport findAirport(Airport airports[MAX], int length, char code[4]) 
 
 int findAirport(struct Airport airports[], int length, char code[4]) {
 	struct temp temps;
@@ -123,7 +110,10 @@ int findAirport(struct Airport airports[], int length, char code[4]) {
 }
 
 
-/*void printAirports(struct Airport airports[], int length) {
+/*
+----------------Working Fine but, Missing Alignment while printing------------------------
+
+void printAirports(struct Airport airports[], int length) {
 	printf("\n Code\t  \tName\t\t\t\t   Latitude        Latitude\n\n");
 	for(i=0;i<length;i++) {
 		printf(" %s\t  %s\t\t\t   %lf       %lf\n", airports[i].code, airports[i].name, airports[i].Latitude, airports[i].Longitude);
@@ -160,8 +150,14 @@ void printAirports(struct Airport airports[], int length) {
 
 
 
-//double calculateDistance(Airport airport1, Airport airport2);  //double calculateDistance(Airport airport1, Airport airport2)
+double calculateDistance(char str1[4], char str2[4]) {
+		
+}
 
-double calculateDistance(char st) {
+
+
+
+
+void findInRange(struct Airport airports[], int length, char origin[4], int range, struct Airport output[], int resultsLength) {
 	
 }
