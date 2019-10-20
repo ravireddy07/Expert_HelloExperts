@@ -6,7 +6,8 @@
 /*
 ####   To do   ####
 1-- Put Printf before taking input from user by telling what type of input has to give....
-2-- 
+2-- Airport airports[MAX];
+3-- Fill all functions(in .c or .h(conforamtion))
 */
 
 int main(int argc, char *argv[]) {
