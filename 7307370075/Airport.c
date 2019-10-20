@@ -1,29 +1,16 @@
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
-//#include "Airport.h"
-
-/*
-####   To do   ####
-2-- Airport airports[MAX];
-3-- Fill all functions(in .c or .h(conforamtion))
---create a temporary struct to return with -99999 as its latitude and longitude. 
-*/
-
-struct Airport {
-	char code[3];
-	char name[35];
-	double Latitude;
-	double Longitude;	
-};
+#include "Airport.h"
 
 
 int main(int argc, char *argv[]) {
 	
     struct Airport airports[MAX];
-    int choice;
-    //string ThreeLetterWord_1, ThreeLetterWord_2;  // Restrict to size 3
-    //fillAirports(airports);
+    int choice, length=12, status_1,status_2;
+    char getCode_1[4], getCode_2[4];
+	fillAirports(airports);
+	
 
     do {
         /* Call the function to print the menu */
@@ -34,39 +21,32 @@ int main(int argc, char *argv[]) {
 
         switch(choice) {
             case 1:  {
-                /* 1. Get a 3-letter airport code from the user.
-                //scanf("%s", &ThreeLetterWord_1);
+            	printf("\nEnter the Airport Code to find: ");
+                scanf("%s", getCode_1);
 
-                //2. Call findAirport(Airport airports[MAX], int length, char code[4])
-                //findAirport(ThreeLetterWord_1);
+                status_1 = findAirport(airports, length, getCode_1);
 
-                //3. If either the airport's latitude or longitude is -99999, that means the airport was not found. Print an appropriate error.
-                if() {
 
+                if(status_1 == -99999) {
+                	printf(" CODE        Name                    Latitude    Longitude\n\n");
+                	printf(" %s           -                       %lf        %lf", getCode_1, &temps.tempLatitude, &temps.tempLongitude);
+                	printf("\n \t\t\tAirport Not Found\n");
                 }
-                else {
-
-                }
-                //4. If airport found, print the airport information.*/
-
-                printf("1");
-
                 break;
             }
             case 2: {
-                /*                    Call the printAirports(Airport airports[MAX], int length) function.*/
-                //printAirports();
-                printf("2");
+                printAirports(airports, length);
                 break;
             }
             case 3: {
-                /* 1. Get two 3-letter airport codes from the user. 
-                //scanf("%s %s", &ThreeLetterWord_1, &ThreeLetterWord_2);
+                //1. Get two 3-letter airport codes from the user. 
+                printf("\nEnter the Two(2) Airport Codes to find: ");
+                scanf("%s %s", getCode_1, getCode_2);
 
 
                 //2. Call findAirport(Airport airports[MAX], int length, char code[4]) twice (one each for each of the airport codes entered).
-                //findAirport(ThreeLetterWord_1);
-                //findAirport(ThreeLetterWord_2);
+                status_1 = findAirport(airports, length, getCode_1);
+                status_2 = findAirport(airports, length, getCode_2);
 
                 //3. If either airport's latitude or longitude is -99999, that means that airport was not found. Print an appropriate error.
                 if() {
@@ -78,9 +58,7 @@ int main(int argc, char *argv[]) {
                 //4. If both airports found successfully, call the calculateDistance() function.
                 //calculateDistance();
 
-                //5. Print out the distance between the two airports. */
-                printf("3");
-
+                //5. Print out the distance between the two airports. 
 
                 break;
             }
@@ -111,7 +89,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case 0: {
-                printf("Good-bye!\n");
+                printf("\n\t\t\t\t   Good-bye!\n");
                 break;
             }
         }
@@ -123,21 +101,21 @@ int main(int argc, char *argv[]) {
 
 void printMenu() {
     
-    printf("\n#########################################\n");
+    printf("\n\n\n\t\t\t\t   #########################################\n");
 
-    printf("\tAirport Program Menu\n");
+    printf("\t\t\t\t\t   Airport Program Menu\n");
 
-    printf("#########################################\n");
+    printf("\t\t\t\t   #########################################\n");
 
-    printf("\t1 - Get Airport Information\n");
+    printf("\t\t\t\t\t   1 - Get Airport Information\n");
 
-    printf("\t2 - Get Airport Listing\n");
+    printf("\t\t\t\t\t   2 - Get Airport Listing\n");
 
-    printf("\t3 - Get Distance Between Two Airports\n");
+    printf("\t\t\t\t\t   3 - Get Distance Between Two Airports\n");
 
-    printf("\t4 - Find Airports Within Range\n");
+    printf("\t\t\t\t\t   4 - Find Airports Within Range\n");
 
-    printf("\t0 - Quit\n");
+    printf("\t\t\t\t\t   0 - Quit\n\n");
 
-    printf("Enter your selection: ");
+    printf("\t\t\t\t   Enter your selection: ");
 }
