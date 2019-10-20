@@ -1,17 +1,26 @@
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
-#include "Airport.h"
+//#include "Airport.h"
 
 /*
 ####   To do   ####
-1-- Put Printf before taking input from user by telling what type of input has to give....
 2-- Airport airports[MAX];
 3-- Fill all functions(in .c or .h(conforamtion))
+--create a temporary struct to return with -99999 as its latitude and longitude. 
 */
 
+struct Airport {
+	char code[3];
+	char name[35];
+	double Latitude;
+	double Longitude;	
+};
+
+
 int main(int argc, char *argv[]) {
-    //Airport airports[MAX];
+	
+    struct Airport airports[MAX];
     int choice;
     //string ThreeLetterWord_1, ThreeLetterWord_2;  // Restrict to size 3
     //fillAirports(airports);
@@ -25,10 +34,10 @@ int main(int argc, char *argv[]) {
 
         switch(choice) {
             case 1:  {
-                /* 1. Get a 3-letter airport code from the user.*/
+                /* 1. Get a 3-letter airport code from the user.
                 //scanf("%s", &ThreeLetterWord_1);
 
-                //2. Call findAirport()
+                //2. Call findAirport(Airport airports[MAX], int length, char code[4])
                 //findAirport(ThreeLetterWord_1);
 
                 //3. If either the airport's latitude or longitude is -99999, that means the airport was not found. Print an appropriate error.
@@ -38,23 +47,24 @@ int main(int argc, char *argv[]) {
                 else {
 
                 }
-                //4. If airport found, print the airport information.
+                //4. If airport found, print the airport information.*/
 
-                printf("");
+                printf("1");
 
                 break;
             }
             case 2: {
-                /*                    Call the printAirports() function.*/
+                /*                    Call the printAirports(Airport airports[MAX], int length) function.*/
                 //printAirports();
+                printf("2");
                 break;
             }
             case 3: {
-                /* 1. Get two 3-letter airport codes from the user. */
+                /* 1. Get two 3-letter airport codes from the user. 
                 //scanf("%s %s", &ThreeLetterWord_1, &ThreeLetterWord_2);
 
 
-                //2. Call findAirport() twice (one each for each of the airport codes entered).
+                //2. Call findAirport(Airport airports[MAX], int length, char code[4]) twice (one each for each of the airport codes entered).
                 //findAirport(ThreeLetterWord_1);
                 //findAirport(ThreeLetterWord_2);
 
@@ -69,16 +79,16 @@ int main(int argc, char *argv[]) {
                 //calculateDistance();
 
                 //5. Print out the distance between the two airports. */
-                printf("");
+                printf("3");
 
 
                 break;
             }
             case 4: {
-                /* 1. Get a 3-letter airport code from the user.*/
+                /* 1. Get a 3-letter airport code from the user.
                 //scanf("%s", &ThreeLetterWord);
 
-                //2. Call findAirport() on this origin airport code.
+                //2. Call findAirport(Airport airports[MAX], int length, char code[4]) on this origin airport code.
                 //findAirport(ThreeLetterWord);
 
                 //3. If the airport's latitude or longitude is -99999, that means the airport was not found. Print an appropriate error.
@@ -96,7 +106,7 @@ int main(int argc, char *argv[]) {
                 //findInRange();
 
                 //6. Print the return array of airports in range. If the result length returned is zero, print a message that no airports were found.*/
-                printf("");
+                printf("4");
 
                 break;
             }
