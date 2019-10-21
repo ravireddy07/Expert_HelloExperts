@@ -47,6 +47,12 @@ int main(int argc, char *argv[]) {
 					if(status_1 || status_2 == -99999) {
 						printf("\n \t\t\tAirport Not Found\n");
 					}
+					else if(status_1 == -99999 && status_2 != -99999) {
+						printf("Airport %s is not found, But Airport %s is found. Please check Again...!", getCode_1, getCode_2);
+					}
+					else if(status_1 != -99999 && status_2 == -99999) {
+						printf("Airport %s is not found, But Airport %s is found. Please check Again...!", getCode_2, getCode_1);
+					}
 					else {
 						calculateDistance(getCode_1, getCode_2);
 					}

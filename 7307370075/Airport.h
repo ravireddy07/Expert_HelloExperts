@@ -5,24 +5,23 @@
 
 //1 degree of Longitude = 69.172 miles (111.321 KM)
 
-//latitude 1° = 69 miles
+//latitude 1ï¿½ = 69 miles
 
 int i=0;
 
 struct Airport {
 	char code[4];
-	char name[50];
+	char name[27];
 	double Latitude;
 	double Longitude;
 }airports[MAX], output[MAX];
-	
+
 struct temp {
 	char tempCode[4];
-	char tempName[50];
 	double tempLatitude;
 	double tempLongitude;
 }temps;
-	
+
 void fillAirports(struct Airport airports[]) {
 	//1
 	strcpy(airports[0].code, "SAT");
@@ -31,7 +30,7 @@ void fillAirports(struct Airport airports[]) {
 	airports[0].Longitude = -98.469056;
     //2
 	strcpy(airports[1].code, "BKK");
-	strcpy(airports[1].name, "Bangkok Suvarnabhumi");     
+	strcpy(airports[1].name, "Bangkok Suvarnabhumi");
 	airports[1].Latitude = 13.681108;
 	airports[1].Longitude = 100.747283;
 	//3
@@ -41,7 +40,7 @@ void fillAirports(struct Airport airports[]) {
 	airports[2].Longitude = 2.547780;
 	//4
 	strcpy(airports[3].code, "GTG");
-	strcpy(airports[3].name, "Rio De Janeiro Galeão");
+	strcpy(airports[3].name, "Rio De Janeiro Galeï¿½o");
 	airports[3].Latitude = -22.809999;
 	airports[3].Longitude = -43.250555;
 	//5
@@ -84,7 +83,7 @@ void fillAirports(struct Airport airports[]) {
 	strcpy(airports[11].name, "Tokyo Narita");
 	airports[11].Latitude = 35.765556;
 	airports[11].Longitude = 140.385556;
-		
+
 	return;
 }
 
@@ -104,7 +103,6 @@ int findAirport(struct Airport airports[], int length, char code[4]) {
 		temps.tempCode[4] = code[4];
 		temps.tempLatitude = -99999;
 		temps.tempLongitude = -99999;
-		temps.tempName[50] = NULL;
 	}
 	return temps.tempLatitude;
 }
@@ -122,14 +120,14 @@ void printAirports(struct Airport airports[], int length) {
 
 void printAirports(struct Airport airports[], int length) {
 	printf(" CODE        Name                    Latitude    Longitude\n\n");
-	         
+
 	printf(" SAT    San Antonio Intl            29.533958   -98.469056\n");
 
     printf(" BKK   Bangkok Suvarnabhumi         13.681108   100.747283\n");
 
     printf(" CDG  Paris Charles De Gaulle       49.009722     2.547780\n");
 
-    printf(" GIG   Rio De Janeiro Galeão       -22.809999   -43.250555\n");
+    printf(" GIG   Rio De Janeiro Galeï¿½o       -22.809999   -43.250555\n");
 
     printf(" HKG    Hong Kong Intl              22.308889   113.914722\n");
 
@@ -151,7 +149,7 @@ void printAirports(struct Airport airports[], int length) {
 
 
 double calculateDistance(char str1[4], char str2[4]) {
-		
+
 }
 
 
@@ -159,5 +157,5 @@ double calculateDistance(char str1[4], char str2[4]) {
 
 
 void findInRange(struct Airport airports[], int length, char origin[4], int range, struct Airport output[], int resultsLength) {
-	
+
 }
