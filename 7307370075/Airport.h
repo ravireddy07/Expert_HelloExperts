@@ -1,13 +1,15 @@
 #define MAX 12
 #include<string.h>
 #include<stdio.h>
+#include<math.h>
 
 
 //1 degree of Longitude = 69.172 miles (111.321 KM)
 
 //latitude 1� = 69 miles
 
-int i=0;
+int i, j, airportsLength = 12;
+double distance, pi = 3.14159265358979323846, radians = 6373;
 
 struct Airport {
 	char code[4];
@@ -148,11 +150,34 @@ void printAirports(struct Airport airports[], int length) {
 
 
 
-double calculateDistance(char str1[4], char str2[4]) {
 
+double haversine(double latitude1, double longitude1, double latitude2, double longitude2) { 
+		// Distance between Latitudes and Longitudes
+		double distanceLatitude = (latitude2-latitude1)*(pi/180.0); 
+		double distanceLongitude = (longitude2-longitude1)*(pi/180.0); 
+
+		// Convert to Radians 
+		latitude1 = (latitude1)*(pi/180.0); 
+		latitude2 = (latitude2)*(pi/180.0); 
+
+		// Haversine formulae 
+		double a = (pow(sin(distanceLatitude/2),2) + pow(sin(distanceLongitude/2),2)*(cos(latitude1)*cos(latitude2)));
+		double c = 2*asin(sqrt(a)); 
+		return radians*c; 
 }
 
-
+double calculateDistance(struct Airport airports[], char str1[4], char str2[4]) {
+	for(i=0;i<airportsLength;i++) {
+		if(strcmp(str1, airports[i].code) == 0) {
+			for(j=0;j<airportsLength;j++) {
+				if(strcmp(str2, airports[j].code) == 0) {
+					distance = haversine(airports[i].Latitude, airports[i].Longitude, airports[j].Latitude, airports[j].Longitude);
+					return distance;
+				}
+			}
+		}
+	}	
+}
 
 
 

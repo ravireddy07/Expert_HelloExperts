@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 
     struct Airport airports[MAX];
     int choice, length=12, status_1, status_2, resultsLength=0;
-    double rangeDistance;
+    double rangeDistance, resultDistance, KM_mile=1.60893707538269;
     char getCode_1[4], getCode_2[4];
 		fillAirports(airports);
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 					if(status_1 == -99999) {
 						printf(" CODE        Name                    Latitude    Longitude\n\n");
 						printf(" %s           -                       %lf        %lf", getCode_1, &temps.tempLatitude, &temps.tempLongitude);
-						printf("\n \t\t\tAirport Not Found\n");
+						printf("\n \t\t\tAirport Not Found. Check the code and try again.\n");
 					}
 					break;
 				}
@@ -37,15 +37,17 @@ int main(int argc, char *argv[]) {
 					break;
 				}
 				case 3: {
-					printf("\nEnter the Two(2) Airport Codes to find: ");
-					scanf("%s %s", getCode_1, getCode_2);
-
+					printf("\nEnter the First Airport Code: ");
+					scanf("%s", getCode_1);
 					status_1 = findAirport(airports, length, getCode_1);
+					
+					printf("\nEnter the Second Airport Code to find: ");
+					scanf("%s", getCode_2);
 					status_2 = findAirport(airports, length, getCode_2);
 
 					//3. If either airport's latitude or longitude is -99999, that means that airport was not found. Print an appropriate error.
 					if(status_1 || status_2 == -99999) {
-						printf("\n \t\t\tAirport Not Found\n");
+						printf("\n \t\t\tAirport Not Found. Check the code and try again.\n");
 					}
 					else if(status_1 == -99999 && status_2 != -99999) {
 						printf("Airport %s is not found, But Airport %s is found. Please check Again...!", getCode_1, getCode_2);
@@ -54,7 +56,8 @@ int main(int argc, char *argv[]) {
 						printf("Airport %s is not found, But Airport %s is found. Please check Again...!", getCode_2, getCode_1);
 					}
 					else {
-						calculateDistance(getCode_1, getCode_2);
+						resultDistance = calculateDistance(airports, getCode_1, getCode_2);
+						printf("\nThe Distance Between two Airports is: %lf miles and %lf KM.\n", resultDistance/KM_mile, resultDistance);
 					}
 					break;
 				}
@@ -76,7 +79,7 @@ int main(int argc, char *argv[]) {
 						findInRange(airports, length, getCode_1, rangeDistance, output, resultsLength);
 
 						if(resultsLength == 0) {
-							printf("\n \t\t\tNo Airports Found\n");
+							printf("\n \t\t\tNo Airports Found.\n");
 						}
 						else {
 							printf("\n There are %d Airports in given range.\n", resultsLength);
