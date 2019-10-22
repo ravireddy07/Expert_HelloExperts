@@ -23,6 +23,7 @@ struct Output {
 	double distance;
 }output[142];
 
+//temp structure is for printing the airports which are not in dataset
 struct temp {
 	char tempCode[4];
 	double tempLatitude;
@@ -111,19 +112,19 @@ int findAirport(struct Airport airports[], int length, char code[4]) {
 		temps.tempLatitude = -99999;
 		temps.tempLongitude = -99999;
 	}
-	return temps.tempLatitude;
+	return temps.tempLatitude; //returning latitude/longitude to airport.c to print appropriate message.
 }
 
 
 
-//----------------Working Fine but, Missing Alignment while printing------------------------
+//-------------This code is Working Fine but, Missing Alignment while printing------------------------
 /*
 void printAirports(struct Airport airports[], int length) {
 	printf("\n Code\t  \tName\t\t\t\t   Latitude        Latitude\n\n");
 	for(i=0;i<length;i++) {
 		printf(" %s\t  %s\t\t\t   %lf       %lf\n", airports[i].code, airports[i].name, airports[i].Latitude, airports[i].Longitude);
 	}
-} 
+}
 */
 void printAirports(struct Airport airports[], int length) {
 	printf(" CODE        Name                    Latitude    Longitude\n\n");
@@ -155,32 +156,32 @@ void printAirports(struct Airport airports[], int length) {
 
 
 
-double haversine(double latitude1, double longitude1, double latitude2, double longitude2) { 
+double haversine(double latitude1, double longitude1, double latitude2, double longitude2) {
 		// Distance between Latitudes and Longitudes
-		double distanceLatitude = (latitude2-latitude1)*(pi/180.0); 
-		double distanceLongitude = (longitude2-longitude1)*(pi/180.0); 
+		double distanceLatitude = (latitude2-latitude1)*(pi/180.0);
+		double distanceLongitude = (longitude2-longitude1)*(pi/180.0);
 
-		// Convert to Radians 
-		latitude1 = (latitude1)*(pi/180.0); 
-		latitude2 = (latitude2)*(pi/180.0); 
+		// Convert to Radians
+		latitude1 = (latitude1)*(pi/180.0);
+		latitude2 = (latitude2)*(pi/180.0);
 
-		// Haversine formulae 
+		// Haversine formulae
 		double a = (pow(sin(distanceLatitude/2),2) + pow(sin(distanceLongitude/2),2)*(cos(latitude1)*cos(latitude2)));
-		double c = 2*asin(sqrt(a)); 
-		return radians*c; 
+		double c = 2*asin(sqrt(a));
+		return radians*c;
 }
 
 double calculateDistance(struct Airport airports[], char str1[4], char str2[4]) {
 	for(i=0;i<airportsLength;i++) {
-		if(strcmp(str1, airports[i].code) == 0) {
+		if(strcmp(str1, airports[i].code) == 0) {  //strcmp() is used to compare two strings
 			for(j=0;j<airportsLength;j++) {
 				if(strcmp(str2, airports[j].code) == 0) {
 					distance = haversine(airports[i].Latitude, airports[i].Longitude, airports[j].Latitude, airports[j].Longitude);
-					return distance/KM_mile;
+					return distance/KM_mile; //returning the distance by converting Kilometers to miles
 				}
 			}
 		}
-	}	
+	}
 }
 
 
@@ -191,18 +192,18 @@ int findInRange(struct Airport airports[], int length, char origin[4], double ra
 	for(i=0;i<length;i++) {
 		for(j=0;j<length;j++) {
 			if(strcmp(airports[i].code, airports[j].code) == 0) {
-				continue;
+				continue; //skiping the airports which are same. example: LHR, LHR
 			}
 			else {
 				output[outputIndex].distance = calculateDistance(airports, airports[i].code, airports[j].code);
 				strncpy(output[outputIndex].code1, airports[i].code, 4);
 				strncpy(output[outputIndex].code2, airports[j].code, 4);
-				outputIndex++;				
+				outputIndex++;
 			}
 		}
 	}
 	printf("\n Origin Airport\t     Other Airport\t    Distance\t      Range Specified\n");
-	
+
 	for(i=0;i<outputIndex;i++) {
 		if(strcmp(origin, output[i].code1) != 0) {
 			if(strcmp(origin, output[i].code2) != 0) {
@@ -213,5 +214,5 @@ int findInRange(struct Airport airports[], int length, char origin[4], double ra
 			}
 		}
 	}
-	return resultsLength;	
+	return resultsLength;
 }
