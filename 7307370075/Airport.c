@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 					printf("\nEnter the Airport Code to find: ");
 					scanf("%s", getCode_1);
 
-					status_1 = findAirport(airports, length, getCode_1);
+					status_1 = findAirport(airports, length, getCode_1); //storing the output of findAirport() in status_1 to print appropriate Message.
 
 					if(status_1 == -99999) {
 						printf(" CODE        Name                    Latitude    Longitude\n\n");
@@ -33,20 +33,21 @@ int main(int argc, char *argv[]) {
 					}
 					break;
 				}
+
 			  case 2: {
 					printAirports(airports, length);
 					break;
 				}
+
 				case 3: {
 					printf("\nEnter the First Airport Code: ");
 					scanf("%s", getCode_1);
-					status_1 = findAirport(airports, length, getCode_1);
-					
+					status_1 = findAirport(airports, length, getCode_1); //storing the output of findAirport() in status_1 to print appropriate Message.
+
 					printf("\nEnter the Second Airport Code to find: ");
 					scanf("%s", getCode_2);
-					status_2 = findAirport(airports, length, getCode_2);
+					status_2 = findAirport(airports, length, getCode_2); //storing the output of findAirport() in status_2 to print appropriate Message.
 
-					//3. If either airport's latitude or longitude is -99999, that means that airport was not found. Print an appropriate error.
 					if(status_1 || status_2 == -99999) {
 						printf("\n \t\t\tAirport Not Found. Check the code and try again.\n");
 					}
@@ -58,15 +59,17 @@ int main(int argc, char *argv[]) {
 					}
 					else {
 						resultDistance = calculateDistance(airports, getCode_1, getCode_2);
+            // Showing or Printing the output of calculateDistance() in Miles and Kilometers
 						printf("\nThe Distance Between two Airports is: %lf miles and %lf KM.\n", resultDistance, resultDistance*KM_mile);
 					}
 					break;
 				}
+
 				case 4: {
 					printf("\nEnter the Airport Code to find: ");
 					scanf("%s", getCode_1);
 
-					status_1 = findAirport(airports, length, getCode_1);
+					status_1 = findAirport(airports, length, getCode_1); //storing the output of findAirport() in status_1 to print appropriate Message.
 
 					if(status_1 == -99999) {
 						printf(" CODE        Name                    Latitude    Longitude\n\n");
@@ -75,26 +78,29 @@ int main(int argc, char *argv[]) {
 					}
 					else {
 						printf("\n Enter the range to find nearby Airports: ");
-						scanf("%lf", &rangeDistance);
+						scanf("%lf", &rangeDistance); //Entering the range
 
+            //findInRange() function will return the number of airports in given range
+            //resultsLength will have the count of Airports are in given range.
 						resultsLength = findInRange(airports, length, getCode_1, rangeDistance, output, resultsLength);
 
 						if(resultsLength == 0) {
 							printf("\n \t\t\tNo Airports Found.\n");
 						}
 						else {
-							printf("\n There are %d Airports in given range.\n", resultsLength);
+							printf("\n There are %d Airports in given range.\n", resultsLength);  //printing the number of airports in range
 						}
 					}
 					break;
 				}
+
 				case 0: {
 					printf("\n\t\t\t\t   Good-bye!\n");
 					break;
 				}
 			}
-		} while (choice != 0);
-
+		} while (choice != 0); //it will run again and again until choice=0
+                           //Advantage of this, we don't have to comile again and again for checking multiple options
 		return 0;
 }
 
