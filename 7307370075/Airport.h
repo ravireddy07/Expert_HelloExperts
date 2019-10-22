@@ -1,22 +1,27 @@
-#define MAX 12
-#include<string.h>
 #include<stdio.h>
+#include<string.h>
 #include<math.h>
 
-
-//1 degree of Longitude = 69.172 miles (111.321 KM)
-
-//latitude 1� = 69 miles
+#define MAX 12
+#define pi 3.14159265358979323846
+#define radians 6373
+#define KM_mile 1.60893707538269
 
 int i, j, airportsLength = 12;
-double distance, pi = 3.14159265358979323846, radians = 6373;
+double distance;
 
 struct Airport {
 	char code[4];
 	char name[27];
 	double Latitude;
 	double Longitude;
-}airports[MAX], output[MAX];
+}airports[MAX];
+
+struct Output {
+	char code1[4];
+	char code2[4];
+	double distance;
+}output[142];
 
 struct temp {
 	char tempCode[4];
@@ -110,16 +115,16 @@ int findAirport(struct Airport airports[], int length, char code[4]) {
 }
 
 
-/*
-----------------Working Fine but, Missing Alignment while printing------------------------
 
+//----------------Working Fine but, Missing Alignment while printing------------------------
+/*
 void printAirports(struct Airport airports[], int length) {
 	printf("\n Code\t  \tName\t\t\t\t   Latitude        Latitude\n\n");
 	for(i=0;i<length;i++) {
 		printf(" %s\t  %s\t\t\t   %lf       %lf\n", airports[i].code, airports[i].name, airports[i].Latitude, airports[i].Longitude);
 	}
-}*/
-
+} 
+*/
 void printAirports(struct Airport airports[], int length) {
 	printf(" CODE        Name                    Latitude    Longitude\n\n");
 
@@ -150,7 +155,6 @@ void printAirports(struct Airport airports[], int length) {
 
 
 
-
 double haversine(double latitude1, double longitude1, double latitude2, double longitude2) { 
 		// Distance between Latitudes and Longitudes
 		double distanceLatitude = (latitude2-latitude1)*(pi/180.0); 
@@ -172,7 +176,7 @@ double calculateDistance(struct Airport airports[], char str1[4], char str2[4]) 
 			for(j=0;j<airportsLength;j++) {
 				if(strcmp(str2, airports[j].code) == 0) {
 					distance = haversine(airports[i].Latitude, airports[i].Longitude, airports[j].Latitude, airports[j].Longitude);
-					return distance;
+					return distance/KM_mile;
 				}
 			}
 		}
@@ -180,7 +184,34 @@ double calculateDistance(struct Airport airports[], char str1[4], char str2[4]) 
 }
 
 
-
-void findInRange(struct Airport airports[], int length, char origin[4], int range, struct Airport output[], int resultsLength) {
-
+int findInRange(struct Airport airports[], int length, char origin[4], double range, struct Output output[], int resultsLength) {
+	//Finding all Distances
+	int outputIndex = 0;
+	resultsLength = 0;
+	for(i=0;i<length;i++) {
+		for(j=0;j<length;j++) {
+			if(strcmp(airports[i].code, airports[j].code) == 0) {
+				continue;
+			}
+			else {
+				output[outputIndex].distance = calculateDistance(airports, airports[i].code, airports[j].code);
+				strncpy(output[outputIndex].code1, airports[i].code, 4);
+				strncpy(output[outputIndex].code2, airports[j].code, 4);
+				outputIndex++;				
+			}
+		}
+	}
+	printf("\n Origin Airport\t     Other Airport\t    Distance\t      Range Specified\n");
+	
+	for(i=0;i<outputIndex;i++) {
+		if(strcmp(origin, output[i].code1) != 0) {
+			if(strcmp(origin, output[i].code2) != 0) {
+				if(range >= output[i].distance) {
+					printf("\n     %s\t\t  %s\t\t  %lf           %lf\n", origin, output[i].code1, output[i].distance, range);
+					resultsLength++;
+				}
+			}
+		}
+	}
+	return resultsLength;	
 }

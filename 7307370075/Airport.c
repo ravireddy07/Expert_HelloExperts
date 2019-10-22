@@ -1,16 +1,17 @@
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
-#include "Airport.h"
-
+#include "Airport.h"             //Loading airport.h header file
+#define KM_mile 1.60893707538269        //Difference between Kilometer and Mile
 
 int main(int argc, char *argv[]) {
 
     struct Airport airports[MAX];
-    int choice, length=12, status_1, status_2, resultsLength=0;
-    double rangeDistance, resultDistance, KM_mile=1.60893707538269;
-    char getCode_1[4], getCode_2[4];
-		fillAirports(airports);
+    struct Output output[132];  //Output of distances between two airports. 132 is the maximum combination.
+    int choice, length=12,ll, status_1, status_2, resultsLength=0;
+    double rangeDistance, resultDistance;
+    char getCode_1[4], getCode_2[4];  //Taking input of Airport codes. Not more than 3 letters
+		fillAirports(airports);  //Inserting Data
 
 
     do {
@@ -57,7 +58,7 @@ int main(int argc, char *argv[]) {
 					}
 					else {
 						resultDistance = calculateDistance(airports, getCode_1, getCode_2);
-						printf("\nThe Distance Between two Airports is: %lf miles and %lf KM.\n", resultDistance/KM_mile, resultDistance);
+						printf("\nThe Distance Between two Airports is: %lf miles and %lf KM.\n", resultDistance, resultDistance*KM_mile);
 					}
 					break;
 				}
@@ -76,7 +77,7 @@ int main(int argc, char *argv[]) {
 						printf("\n Enter the range to find nearby Airports: ");
 						scanf("%lf", &rangeDistance);
 
-						findInRange(airports, length, getCode_1, rangeDistance, output, resultsLength);
+						resultsLength = findInRange(airports, length, getCode_1, rangeDistance, output, resultsLength);
 
 						if(resultsLength == 0) {
 							printf("\n \t\t\tNo Airports Found.\n");
@@ -85,7 +86,6 @@ int main(int argc, char *argv[]) {
 							printf("\n There are %d Airports in given range.\n", resultsLength);
 						}
 					}
-
 					break;
 				}
 				case 0: {
