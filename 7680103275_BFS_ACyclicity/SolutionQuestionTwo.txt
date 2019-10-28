@@ -1,0 +1,25 @@
+
+DFS is used to find cycles in directed graphs, because it works.
+
+In a DFS, every vertex is "visited", where visiting a vertex means:
+
+   The vertex is started
+   The subgraph reachable from that vertex is visited. This includes tracing all untraced edges that are reachable from that vertex, and visiting all reachable unvisited vertexes.
+
+   The vertex is finished.
+
+The critical feature is that all edges reachable from a vertex are traced before the vertex is finished. This is a feature of DFS, but not BFS. In fact this is the definition of DFS.
+
+Because of this feature, we know that when the first vertex in a cycle is started:
+
+  None of the edges in the cycle have been traced. We know this, because you can only get to them from another vertex in the cycle, and we're talking about the first vertex to be started.
+  All untraced edges reachable from that vertex will be traced before it is finished, and that includes all the edges in the cycle, because none of them has been traced yet. Therefore, if there is a cycle, we will find an edge back to the first vertex after it is started, but before it is finished; and
+  Since all edges that are traced are reachable from every started-but-unfinished vertex, finding an edge to such a vertex always indicates a cycle.
+
+So, if there is a cycle, then we are guaranteed to find an edge to a started-but-unfinished vertex (2), and if we find such an edge, then we are guaranteed that there is a cycle (3).
+
+That's why DFS is used to find cycles in directed graphs.
+
+BFS provides no such guarantees, so it just doesn't work. (notwithstanding perfectly good cycle-finding algorithms that include BFS or similar as a sub-procedure)
+
+An undirected graph, on the other hand, has a cycle whenever there are two paths between any pair of vertexes, i.e., when it's not a tree. This is easy to detect during either BFS or DFS -- The edges traced to new vertexes form a tree, and any other edge indicates a cycle.

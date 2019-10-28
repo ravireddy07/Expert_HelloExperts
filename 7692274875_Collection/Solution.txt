@@ -1,0 +1,63 @@
+I don't know why such an old question popped up in my feed.
+
+Here is the actual files something look like,
+
+
+#----------edit.jsp-----------------------
+
+<html>
+<body>
+<form action="collection.jsp">
+Enter your Name: 
+<input type="text" name="nm" />
+<select name="hobby" multiple >
+    <option value="dance" > Dance </option>
+    <option value="reading" > Reading </option>
+    <option value="music" > Music  </option>
+</select>
+<input type="submit" value="ok"/>
+</form>
+</body>
+</html>
+
+
+#----------Collection.jsp-----------------------
+
+<body bgcolor="${(10>8)? 'pink' : 'YELLOW'}" >
+EL implicit Object : <br>
+==================
+<br>Your name is : 
+${param.nm} <br>
+your hobbies are : 
+${paramValues.hobby[0]}
+${paramValues.hobby[1]}
+${paramValues.hobby[2]} <br>
+ 
+pageContext object :  <br>
+ 
+Session : ${pageContext.session.id}  <br>
+Method : ${pageContext.request.method} <br>
+ 
+initParam : 
+<!-- 
+in web.xml 
+<context-param>
+  <param-name>AppID</param-name>
+  <param-value>123</param-value>
+  </context-param>
+-->
+${initParam.AppID}
+ 
+ 
+<br>
+Header : 
+${header.Accept} <br> OR <br>
+${header["Accept"]}  <br>
+Cookie : 
+${cookie.JSESSIONID.value}
+ 
+<%
+ pageContext.setAttribute("name", "mca");
+ %>
+ <br> Page Scope : 
+ ${pageScope.name}
