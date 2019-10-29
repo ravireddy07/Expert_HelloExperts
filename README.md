@@ -13,3 +13,7 @@
 > [7546568475_VectorTemplate](https://www.helloexperts.com/question-view?q_id=7546568475)
 
 > [7545510075_DecisionTree](https://www.helloexperts.com/question-view?q_id=7545510075)
+
+> [7680103275_BFS_ACyclicity](https://www.helloexperts.com/question-view?q_id=7680103275)
+
+> [7692274875_Collection](https://www.helloexperts.com/question-view?q_id=7692274875)
