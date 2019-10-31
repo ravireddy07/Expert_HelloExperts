@@ -22,13 +22,13 @@ int main() {
 	int dailyFahren[5], count=0;
 	
 	while(count != 5) {
-		cout<<"\nEnter the "<<count+1<<"st Temperature: ";
+		cout<<"\nEnter the "<<count+1<<"st Temperature >> ";
 		cin>>dailyFahren[count];
 		if(dailyFahren[count] < 130 && dailyFahren[count] > -30) {
 			count++;      //if temperature is in range , then only we will increment index and take next input
 		}
 		else {
-			cout<<"Invaild, Temperature\n";
+			cout<<"Out of Range --  	please re-enter\n";
 		}
 	}
 	
