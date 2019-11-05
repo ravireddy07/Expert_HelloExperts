@@ -1,0 +1,32 @@
+#------------------------------------------------------------(A)------------------------------------------------------------------------------
+
+--> It will print/Display the titles from the Movie table which is Release Year is 2017.
+-->It will Display the Movie Titles  which are released in 2017.
+
+
+#-----------------------------------------------------------End------------------------------------------------------------------------------
+
+#------------------------------------------------------------(B)------------------------------------------------------------------------------
+
+-->It will list out the First name and Last names of persons from Person and Movie Table,
+   whose (ID from person table is equals to Director from Movie Table And which ahs the Movie Title has 'Star Wars')
+
+-->It will display the first and last name of Director/Directors of Movie 'Star Wars'.  
+
+#-----------------------------------------------------------End------------------------------------------------------------------------------
+
+#------------------------------------------------------------(C)------------------------------------------------------------------------------
+
+-->This statement will display the First name and last name from Person table where ID of that person must be equals to the ID in Actor Table 
+   and ID in movie table must be equals to the ID of movie in Movie Table and Director also equals to the ID in person table.
+   By stafying all this condition, it will display the matched First and Last Names.
+
+
+#-----------------------------------------------------------End------------------------------------------------------------------------------
+
+#------------------------------------------------------------(D)------------------------------------------------------------------------------
+
+-->It will display the FirstName and LastNames from Person table where (ID from Person table equals to the ID of A1 Actor & ID from Person table
+   equals to the ID of A2 Actor & ID of Movie of A1 should not equals to the ID of Movie of A2), if all this condition matches, it will print the corresponding First,Last Names.
+
+#-----------------------------------------------------------End------------------------------------------------------------------------------
