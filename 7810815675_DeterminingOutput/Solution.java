@@ -41,11 +41,11 @@ public class Main {
         map3.put("hhh", "ff");
 
         functions object = new functions();
-        System.out.print("Output for {'horse'='cow','cow'='horse','dog'='cat','ok'='yo'} is : ");
+        //System.out.print("Output for {'horse'='cow','cow'='horse','dog'='cat','ok'='yo'} is : ");
         object.mystery(map1);
-        System.out.print("\n\nOutput for {'bye'='hello','bird'='dog','hi'='hello','hyena'='hello','fruit'='meat'} is : ");
+        //System.out.print("\n\nOutput for {'bye'='hello','bird'='dog','hi'='hello','hyena'='hello','fruit'='meat'} is : ");
         object.mystery(map2);
-        System.out.print("\n\nOutput for {'a'='b','c'='d','e'='a','gg'='c','hhh'='ff'} is : ");
+        //System.out.print("\n\nOutput for {'a'='b','c'='d','e'='a','gg'='c','hhh'='ff'} is : ");
         object.mystery(map3);
     }
 }
