@@ -1,13 +1,3 @@
-#include<iostream>
-#include<bits/stdc++.h>
-#include<string>
-#include<fstream>
-using namespace std;
-
-int x = -1;  // Used for index in heap
-string Heap[1000];
-
-
 void Formation(string str) {
   x++;
   Heap[x] = str;
@@ -73,24 +63,4 @@ void justSort(string str[], int n) {
     Formation(str[i]);
   }
   HeapSort();
-}
-
-
-int main() {
-  int size = 8;  //or cin>>size;
-	// Specify the number of strings there in the text file,
-	//taking input from file and finding the size is not possible(only dealing with strings).
-
-  string PMCO[size];
-  ifstream file("textInput.txt");
-  if(file.is_open()) {
-    for(int i=0;i<size;i++) {
-      file>>PMCO[i];
-    }
-  }
-
-  //int n = sizeof(PMCO)/sizeof(PMCO[0]);
-  justSort(PMCO, size);  //justSort(PMCO, n)
-
-  return 0;
 }
