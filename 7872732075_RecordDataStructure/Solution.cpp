@@ -38,7 +38,7 @@ void displayClassAvgSD(Record records[], int n);
 
 int main() {
     Record records[MAX];
-    string filename = “StudentData.txt”;
+    string filename = "StudentData.txt";
     ifstream fin(filename.c_str());
     int n;
     
@@ -67,84 +67,79 @@ int main() {
 
 
 void displayRecords(Record records[], int n) {
-    cout<<left<<setw(15)<<“Student id”<<right<<setw(10)<<“Score 1″<<right<<setw(10)<<“Score 2″<<right<<setw(10)<<“Score 3″<<right<<setw(15)<<“Average Score”
-<<right<<setw(15)<<“Letter Grade”<<endl;
-
-cout<<fixed<<setprecision(2);
-for(int i=0;i<n;i++)
-{
-cout<<left<<setw(15)<<records[i].student_id<<right<<setw(10)<<records[i].scores[0]<<right<<setw(10)<<records[i].scores[1]<<right<<setw(10)<<records[i].scores[2]
-<<right<<setw(10)<<records[i].avgScore<<right<<setw(12)<<records[i].letterGrade<<endl;
-}
-cout<<endl;
+    cout<<left<<setw(15)<<"Student id"<<right<<setw(10)<<"Score 1"<<right<<setw(10)<<"Score 2"<<right<<setw(10)<<"Score 3"<<right<<setw(15)<<"Average Score"<<right<<setw(15)<<"Letter Grade"<<endl;
+    cout<<fixed<<setprecision(2);
+    for(int i=0;i<n;i++) {
+        cout<<left<<setw(15)<<records[i].student_id<<right<<setw(10)<<records[i].scores[0]<<right<<setw(10)<<records[i].scores[1]<<right<<setw(10)<<records[i].scores[2]<<right<<setw(10)<<records[i].avgScore<<right<<setw(12)<<records[i].letterGrade<<endl;
+    }
+    cout<<endl;
 }
 
-/
-void computeAverage(Record records[], int n)
-{
-for(int i=0;i<n;i++)
-{
-records[i].avgScore = 0;
-for(int j=0;j<3;j++)
-records[i].avgScore += records[i].scores[j];
-records[i].avgScore = records[i].avgScore/3;
-}
+void computeAverage(Record records[], int n) {
+    for(int i=0;i<n;i++) {
+        records[i].avgScore = 0;
+        for(int j=0;j<3;j++) {
+            records[i].avgScore += records[i].scores[j];
+        }
+        records[i].avgScore = records[i].avgScore/3;
+    }
 }
 
 
-void computeLetterGrade(Record records[], int n)
-{
-for(int i=0;i<n;i++)
-{
-if(records[i].avgScore >= 90)
-records[i].letterGrade = ‘A’;
-else if(records[i].avgScore >= 80)
-records[i].letterGrade = ‘B’;
-else if(records[i].avgScore >= 65)
-records[i].letterGrade = ‘C’;
-else if(records[i].avgScore >= 50)
-records[i].letterGrade = ‘D’;
-else
-records[i].letterGrade = ‘F’;
-}
-}
-
-
-double computeClassAverage(Record records[], int n)
-{
-if(n <= 0)
-return 0;
-double avg = 0;
-for(int i=0;i<n;i++)
-avg += records[i].avgScore;
-
-avg = avg/n; 
-return avg;
+void computeLetterGrade(Record records[], int n) {
+    for(int i=0;i<n;i++) {
+        if(records[i].avgScore >= 90) {
+            records[i].letterGrade = ‘A’;
+        }
+        else if(records[i].avgScore >= 80) {
+            records[i].letterGrade = ‘B’;
+        }
+        else if(records[i].avgScore >= 65) {
+            records[i].letterGrade = ‘C’;
+        }
+        else if(records[i].avgScore >= 50) {
+            records[i].letterGrade = ‘D’;
+        }
+        else {
+            records[i].letterGrade = ‘F’;
+        }
+    }
 }
 
 
-double computeClassStandardDeviation(Record records[], int n)
-{
-if(n <= 0)
-return 0;
-
-double avg = computeClassAverage(records,n);
-double sd = 0;
-
-for(int i=0;i<n;i++)
-sd += pow(avg-records[i].avgScore,2);
-
-sd = sqrt(sd/n);
-
-return sd;
+double computeClassAverage(Record records[], int n) {
+    if(n<=0) {
+        return 0;
+    }
+    double avg = 0;
+    for(int i=0;i<n;i++) {
+        avg += records[i].avgScore;
+    }
+    avg = avg/n;
+    return avg;
 }
 
 
-void displayClassAvgSD(Record records[], int n)
-{
-double avg = computeClassAverage(records,n); 
-double sd = computeClassStandardDeviation(records, n); 
-cout<<fixed<<setprecision(2);
-cout<<“Class Average : “<<avg<<endl;
-cout<<“Class Standard Deviation : “<<sd<<endl;
+double computeClassStandardDeviation(Record records[], int n) {
+    if(n<=0) {
+        return 0;
+    }
+    double avg = computeClassAverage(records,n);
+    double sd = 0;
+
+    for(int i=0;i<n;i++) {
+        sd += pow(avg-records[i].avgScore,2);
+    }
+
+    sd = sqrt(sd/n);
+    return sd;
+}
+
+
+void displayClassAvgSD(Record records[], int n) {
+    double avg = computeClassAverage(records,n);
+    double sd = computeClassStandardDeviation(records, n);
+    cout<<fixed<<setprecision(2);
+    cout<<"Class Average : "<<avg<<endl;
+    cout<<"Class Standard Deviation : "<<sd<<endl;
 }
