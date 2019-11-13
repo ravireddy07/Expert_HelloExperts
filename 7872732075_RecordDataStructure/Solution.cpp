@@ -1,5 +1,5 @@
 /*
-Input Format:
+Sample Input Format Description:
 
 Each line in file contains information for 1 student
 Each line is of the format : <student_id> <score1> <score2> <score3>
@@ -52,7 +52,7 @@ int main() {
             n++;
         }
         
-        fin.close()
+        fin.close();
         computeAverage(records,n);
         computeLetterGrade(records,n);
         displayRecords(records,n);
@@ -89,19 +89,19 @@ void computeAverage(Record records[], int n) {
 void computeLetterGrade(Record records[], int n) {
     for(int i=0;i<n;i++) {
         if(records[i].avgScore >= 90) {
-            records[i].letterGrade = ‘A’;
+            records[i].letterGrade = 'A';
         }
         else if(records[i].avgScore >= 80) {
-            records[i].letterGrade = ‘B’;
+            records[i].letterGrade = 'B';
         }
         else if(records[i].avgScore >= 65) {
-            records[i].letterGrade = ‘C’;
+            records[i].letterGrade = 'C';
         }
         else if(records[i].avgScore >= 50) {
-            records[i].letterGrade = ‘D’;
+            records[i].letterGrade = 'D';
         }
         else {
-            records[i].letterGrade = ‘F’;
+            records[i].letterGrade = 'F';
         }
     }
 }
