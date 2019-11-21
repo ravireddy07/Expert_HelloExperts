@@ -1,103 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-public class HealthProfile {
-    private String firstname;
-    private String secondname;
-    private String DOB;
-    private int day;
-    private int month;
-    private int year;
-    private int weight;
-    private int height;
-    private String gender;
-
-    public HealthProfile(String firstname, String secondname, int day, int month, int year, int weight, int height,
-            String gender) {
-        this.setFirstname(firstname);
-        this.setSecondname(secondname);
-        this.setDOB(day, month, year);
-        this.setWeight(weight);
-        this.setHeight(height);
-        this.setGender(gender);
-    }
-
-    public String getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(int day, int month, int year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        DOB = this.day + " " + this.month + " " + this.year;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getSecondname() {
-        return secondname;
-    }
-
-    public void setSecondname(String secondname) {
-        this.secondname = secondname;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public double BMI() {
-        this.getWeight();
-        this.getHeight();
-        double bmi = (getWeight() * 703) + (getHeight() * getHeight());
-        return bmi;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int age() {
-        int age = 2013 - this.year;
-        return age;
-    }
-
-    public double MaxHeartRate() {
-        int range = age() - 220;
-        return range;
-    }
-
-    public double TargetHeartRate() {
-        int range = (50 / 100) - (80 / 100);
-        double target = range * MaxHeartRate();
-        return target;
-    }
-}
-
-
 class Patient {
     String firstName, lastName, gender;
     double weight, height, BMI, MaxHeartRate, TargetHeartRate ;
@@ -128,12 +31,13 @@ class Patient {
 
     void displayDetails() {
         System.out.println("The patient's Name is: " + firstName +" "+ lastName);
-        System.out.println("The patient's Max Heart Rate is : " + MaxHeartRate);
-        System.out.println("The patient's Target Heart Rate is : " + TargetHeartRate);
+        System.out.println("The patient's Max Heart Rate is : " + (int)MaxHeartRate);
+        System.out.println("The patient's Target Heart Rate is : " + (int)TargetHeartRate);
+        System.out.println("The patient's BMI is : " + BMI);
         System.out.println("The patient's Age is : " + age);
         System.out.println("The patient's Gender is : " + gender);
-        System.out.println("The patient's height in inches: "+height);
-        System.out.println("The patient's weight in Pounds: "+weight);
+        System.out.println("The patient's height in inches: "+(int)height);
+        System.out.println("The patient's weight in Pounds: "+(int)weight);
         System.out.println("The patient's DOB(mm/dd/yyyy) is : " + month +"/"+ day +"/"+ year);
     }
     
@@ -141,10 +45,11 @@ class Patient {
         age = currYear - year;
         MaxHeartRate = 220 - age;
         TargetHeartRate = MaxHeartRate * 0.85;
-        BMI = (weight * 703) / (65 * 2);
+        BMI = (((weight * 703)/65)/65);
     }
 }
 
+//Main Code(Driver code)
 class HealthProfileTest {
     public static void main(String[] args) {
         Patient p = new Patient();
