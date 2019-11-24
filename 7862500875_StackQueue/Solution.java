@@ -29,11 +29,11 @@ class Stack {
 
 	void SortDisplay() {
 		for (int i = 0; i < 100; i++) {
-			System.out.println("Element at" + (i + 1) + " before sorting is: " + a[i]);
+			System.out.println("Element at " + (i + 1) + " before sorting is: " + a[i]);
 		}
 		Arrays.sort(a);
 		for (int i = 0; i < 100; i++) {
-			System.out.println("Element at" + (i + 1) + " after sorting is: " + a[i]);
+			System.out.println("Element at " + (i + 1) + " after sorting is: " + a[i]);
 		}
 	}
 
@@ -120,6 +120,7 @@ class linkedQueue {
 			rear.setLink(nptr);
 			rear = rear.getLink();
 		}
+        System.out.println(data + " enqueued into Queue");
 		size++;
 	}
 
@@ -142,6 +143,7 @@ class linkedQueue {
 	}
 
 	public void display() {
+        int cc=1;
 		System.out.print("\nQueue = ");
 		if (size == 0) {
 			System.out.print("Empty\n");
@@ -149,7 +151,8 @@ class linkedQueue {
 		}
 		Node ptr = front;
 		while (ptr != rear.getLink()) {
-			System.out.print(ptr.getData() + " ");
+            System.out.println("Element at " + (cc) + " before sorting is: " + ptr.getData());
+            cc++;
 			ptr = ptr.getLink();
 		}
 		System.out.println();
@@ -173,8 +176,9 @@ public class LinkedQueueImplement {
 			lq.insert(rand_int);
 			s.push(rand_int);
 		}
+
+        lq.display();
 		s.SortDisplay();
-		lq.display();
 
 		for (int i = 0; i < 100; i++) {
 			try {
@@ -187,8 +191,9 @@ public class LinkedQueueImplement {
 			}
 		}
 
-		System.out.println("Stack is Empty.!!");
 		System.out.println("Empty status = " + lq.isEmpty());
+        System.out.println("Stack is Empty.!!");
+        System.out.println("Queue is Empty.!!");
 
 		System.out.println("Stack has taken " + stackCount + " times to get emptyed.");
 		System.out.println("Queue has taken " + lq.count() + " times to get emptyed.");
