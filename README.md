@@ -1,6 +1,9 @@
 #HelloExpert
 
-[Website](www.helloexpert.com)
+#CheggExpert
+
+[Hello Expert](https://www.helloexpert.com)
+[Chegg](https://www.chegg.com/)
 
 ##Problems Till now and their links
 
