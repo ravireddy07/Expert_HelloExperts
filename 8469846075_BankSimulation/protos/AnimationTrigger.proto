@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package banksimulation;
+
+service BankSimulatorStateProxy {
+  rpc SendState (BankSimulatorState) returns (ServerAck) {}
+}
+
+message BankSimulatorState {
+  int32 pid = 1;
+
+  enum Action {
+    EVENTS_LOADED = 0;
+    CUSTOMER_SENT_DIRECTLY_TO_TELLER = 1;
+    CUSTOMER_SENT_TO_TELLER_LINE = 2;
+    CUSTOMER_EXIT = 3;
+    CUSTOMER_SENT_TO_TELLER_FROM_LINE = 4;
+    SIMULATION_END = 5;
+  }
+  Action currentAction = 2;
+
+  int32 tellerNum = 3;
+
+  int32 tellerCount = 4;
+
+  int32 currentTime = 5;
+
+  message BankEvent {
+  	int32 arrivalTime = 1;
+  	int32 duration = 2;
+  }
+  repeated BankEvent arrivalEvent = 6;
+}
+
+// The response message
+message ServerAck {
+  bool ack = 1;
+}
