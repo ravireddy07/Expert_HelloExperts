@@ -1,0 +1,80 @@
+task = 'TASK-1'
+sprintf('\n')
+sprintf('\n')
+sprintf('\n')
+
+promptx = 'Enter the value x: ';
+x = input(promptx)
+
+prompty = 'Enter the value y: ';
+y = input(prompty)
+
+angleDegree = atand(y/x);
+angleDegree1 = 90+angleDegree;
+angleDegree2 = 180-angleDegree;
+angleDegree3 = 180+angleDegree;
+angleDegree4 = 360-angleDegree;
+angleDegree5 = 90;
+angleDegree6 = 270;
+angleDegree7 = 360;
+angleDegree8 = 180;
+
+if x==0 && y==0
+    disp('undefined')
+elseif x>0 && y>0
+    result = ['Required Angle is ',num2str(angleDegree1),' and is in the 1st Quadrant.'];
+    disp(result)
+elseif x==0 && y>0
+    result = ['Required Angle is ',num2str(angleDegree5),' and falls on positive y-axis.'];
+    disp(result)
+elseif x==0 && y<0
+    result = ['Required Angle is ',num2str(angleDegree6),' and falls on negitive y-axis.'];
+    disp(result)
+elseif x>0 && y==0
+    result = ['Required Angle is ',num2str(angleDegree7),' and falls on positive x-axis.'];
+    disp(result)
+elseif x<0 && y==0
+    result = ['Required Angle is ',num2str(angleDegree8),' and falls on negitive y-axis.'];
+    disp(result)
+elseif x>0 && y<0
+    result = ['Required Angle is ',num2str(angleDegree4),' and is in the 4st Quadrant.'];
+    disp(result)
+elseif x<0 && y>0
+    result = ['Required Angle is ',num2str(angleDegree2),' and is in the 2st Quadrant.'];
+    disp(result)
+else
+    result = ['Required Angle is ',num2str(angleDegree3),' and is in the 3st Quadrant.'];
+    disp(result)
+end
+
+task = 'TASK-2'
+sprintf('\n')
+sprintf('\n')
+sprintf('\n')
+
+repeat = 1;
+while repeat!=0 
+    promptChoice = ["Enter either 1.Circle or 2.Ellipse: "];
+    sprintf('\n')
+    choice = input(promptChoice)
+    
+    if choice == 1
+        promptRadius = 'Enter the radius length: ';
+        radius = input(promptRadius)
+        Circumference = (2*3.14159265359*radius);
+        res = ['Circle was chosen with a radius of ', radius, ' Circumference = '];
+        disp(res)
+        disp(Circumference)
+    elseif choice ==2
+        promptMinor = 'Enter the Minor axis length: ';
+        minor = input(promptMinor)
+        promptMajor = 'Enter the Major axis length: ';
+        major = input(promptMajor)
+        E = 3.14159265359*(3(minor+major)-sqrt((3*minor+major)*(minor+3*major)));
+        res = ['Ellipse was chosen with the major axis is ', major, 'and minor axis is', minor,'  Ellipse = '];
+        disp(res)
+        disp(E)
+    end
+    promptRepeat = ["Would you like to repeat the calculation? 1=Yes, 0=No"];
+    repeat = input(promptRepeat)
+end

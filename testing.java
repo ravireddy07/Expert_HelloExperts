@@ -1,31 +1,81 @@
 import java.util.*;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.ArrayList;
 
-abstract class MobileOS {
-	protected abstract void DoStart();
-	public void start() {
-		DoStart();
-	}
-}
-class IOS extends MobileOS {
-	public void DoStart() {
-		System.out.println("This from IOS DoStart");
-	}
+
+class ProducerConsumer {
+    public static void main(String[] args) throws Exception {
+        Queue<Integer> queue = new LinkedList<>();
+        Integer buffer = new Integer(10);  //Important buffer or queue size, change as per need.
+
+        Producer producerThread = new Producer(queue, buffer, "PRODUCER");
+        Consumer consumerThread = new Consumer(queue, buffer, "CONSUMER");
+
+        producerThread.start();  
+        consumerThread.start();
+    }   
 }
 
-class Android  extends MobileOS {
-	public void DoStart() {
-		System.out.println("This from Android DoStart");
-	}
+class Producer extends Thread {
+    private Queue<Integer> queue;
+    private int queueSize ;
+
+    public Producer (Queue<Integer> queueIn, int queueSizeIn, String ThreadName){
+        super(ThreadName);
+        this.queue = queueIn;
+        this.queueSize = queueSizeIn;
+    }
+
+    public void run() {
+        while(true){
+            synchronized (queue) {
+                while(queue.size() == queueSize){
+                    System.out.println(Thread.currentThread().getName() + " FULL         : waiting...\n");
+                    try{
+                        queue.wait();   //Important
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+                //queue empty then produce one, add and notify  
+                int randomInt = new Random().nextInt(); 
+                System.out.println(Thread.currentThread().getName() + " producing... : " + randomInt); 
+                queue.add(randomInt); 
+                queue.notifyAll();  //Important
+            } //synchronized ends here : NOTE
+        }
+    }
 }
 
-class mainclass {
-    public static void main(String args[]) {
-		Android a = new Android();
-		//MobileOS b = new Android();
-		//MobileOS c = new IOS();
-		a.start();
-		a.DoStart();
-		//b.start();
-		//c.start();
-    }  
+class Consumer extends Thread {
+    private Queue<Integer> queue;
+    private int queueSize;
+
+    public Consumer(Queue<Integer> queueIn, int queueSizeIn, String ThreadName){
+        super (ThreadName);
+        this.queue = queueIn;
+        this.queueSize = queueSizeIn;
+    }
+
+    public void run() {
+        while(true){
+            synchronized (queue) {
+                while(queue.isEmpty()){
+                    System.out.println(Thread.currentThread().getName() + " Empty        : waiting...\n");
+                    try {
+                        queue.wait();  //Important
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+                //queue not empty then consume one and notify
+                System.out.println(Thread.currentThread().getName() + " consuming... : " + queue.remove());
+                queue.notifyAll();
+            } //synchronized ends here : NOTE
+        }
+    }
 }

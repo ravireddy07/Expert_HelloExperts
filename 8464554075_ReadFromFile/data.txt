@@ -1,0 +1,10 @@
+Harry1 90
+Harry2 78
+Harry3 34
+Harry4 43
+Harry5 28
+Harry6 78
+Harry7 78
+Harry8 97
+Harry9 67
+Harry10 17
