@@ -118,3 +118,137 @@ class ShoppingCart {
        return currentDate;
    }
 }
+
+class ItemToPurchase {
+    private String itemName;
+    private String itemDescription;
+    private int itemPrice;
+    private int itemQuantity;
+
+    /* Default Constructor */
+    public ItemToPurchase() {
+        this.itemName = "";
+        this.itemDescription = "none";
+        this.itemPrice = 0;
+        this.itemQuantity = 0;
+    }
+
+    /* Parameterised Constructor */
+    public ItemToPurchase(String itemName, String itemDescription, int itemQuantity, int itemPrice) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.itemQuantity = itemQuantity;
+        this.itemPrice = itemPrice;
+    }
+
+    /* Prints the item name, followed by quantity price and subtotal */
+    public void printItemCost() {
+        int subtotal = itemQuantity * itemPrice;
+        System.out.println(itemName + " " + itemQuantity + " @ $" + itemPrice + " = $" + subtotal);
+    }
+
+    /* Prints the item name, and item description */
+    public void printItemDescription() {
+        System.out.println(itemName + ": " + itemDescription);
+    }
+
+    /* Mutator and Accessor Methods For itemDescription */
+    public String getDescription() {
+        return itemDescription;
+    }
+
+    public void setDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    /*
+     * Adding accessor methods for other attributes as well. This must have been
+     * defined in the superclass, please check accordingly
+     */
+    public String getItemName() {
+        return itemName;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public int getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public void setItemQuantity(int itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
+}
+
+class ItemToPurchase {
+    private String itemName;
+    private String itemDescription;
+    private int itemPrice;
+    private int itemQuantity;
+
+    /* Default Constructor */
+    public ItemToPurchase() {
+        this.itemName = "";
+        this.itemDescription = "none";
+        this.itemPrice = 0;
+        this.itemQuantity = 0;
+    }
+
+    /* Parameterised Constructor */
+    public ItemToPurchase(String itemName, String itemDescription, int itemQuantity, int itemPrice) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.itemQuantity = itemQuantity;
+        this.itemPrice = itemPrice;
+    }
+
+    /* Prints the item name, followed by quantity price and subtotal */
+    public void printItemCost() {
+        int subtotal = itemQuantity * itemPrice;
+        System.out.println(itemName + " " + itemQuantity + " @ $" + itemPrice + " = $" + subtotal);
+    }
+
+    /* Prints the item name, and item description */
+    public void printItemDescription() {
+        System.out.println(itemName + ": " + itemDescription);
+    }
+
+    /* Mutator and Accessor Methods For itemDescription */
+    public String getDescription() {
+        return itemDescription;
+    }
+
+    public void setDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    /*
+     * Adding accessor methods for other attributes as well. This must have been
+     * defined in the superclass, please check accordingly
+     */
+    public String getItemName() {
+        return itemName;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public int getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public void setItemQuantity(int itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
+}
