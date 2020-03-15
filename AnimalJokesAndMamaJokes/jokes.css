@@ -1,0 +1,48 @@
+h1 {
+    font-weight: bold;
+    color: orangered;
+    background-color: aquamarine;
+    font-size: 50px;
+    text-align: center;
+}
+
+#title {
+    margin-top: 100px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 150px;
+    background-color: aquamarine;
+}
+
+.joke {
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 20px 20px 80px;
+
+    margin: 25px;
+    height: 12rem;
+    width: 65%;
+    justify-content: space-around;
+    padding-bottom: 35.25%;
+
+    font-family: roboto;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0, 9);
+    text-align: center;
+
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+
+#img {
+    width: 300px;
+    height: 700px;
+    margin-top: 40px;
+    overflow: hidden;
+}
