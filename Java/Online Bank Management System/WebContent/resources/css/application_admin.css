@@ -1,0 +1,10 @@
+body{background:#ecf0f1;}
+#header{margin:20px;}
+#body{margin-top:20px;min-height:450px;}
+#admin_menu{margin:30px 40px 0 40px;list-style-type:none;}
+#admin_menu a{width:200px;margin:10px;}
+#dashboard .row a{margin:20px;margin-bottom:50px;}
+#dashboard *{text-align:center;}
+#dashboard .row a{color:black;}
+#content{padding-top:20px;}
+.list-username{font-size:13px;}

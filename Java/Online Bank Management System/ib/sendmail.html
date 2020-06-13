@@ -1,0 +1,53 @@
+<html>
+<style>
+h4 {color:red;font:700 14pt verdana}
+td {font:11pt verdana}
+a  {font:700 11pt verdana}
+</style>
+
+<script language="javascript">
+function check()
+{
+   if ( f1.body.value == "" )
+   {
+     alert("You must enter body for mail!")
+     f1.body.focus()
+     return false
+   }
+
+}
+
+</script>
+<body bgcolor="lavender">
+<center>
+<div style="color:lavender;background-color:purple;font:700 25pt arial;letter-spacing:5">
+Send Mail To Accounts Manager
+</div>
+
+<form action=sendmail.jsp method="post" name="f1" onsubmit="return check()">
+
+<p>
+<table>
+<tr>
+<td>
+Subject
+<td>
+<input type=text name=subject size=50>
+</tr>
+<tr>
+<td valign="top">
+Mail Body
+<td>
+<textarea name=body rows=5 cols=50></textarea>
+</tr>
+<tr>
+</table>
+<p>
+<input type=submit value="Send Mail">
+<p>
+<a href="home.jsp">Go Back To Menu </a>
+
+</form>
+
+</body>
+</html>   

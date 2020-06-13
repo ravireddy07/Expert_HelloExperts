@@ -1,0 +1,27 @@
+<!DOCTYPE weblogic-rdbms-jar PUBLIC 
+ '-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB RDBMS Persistence//EN'
+ 'http://www.bea.com/servers/wls700/dtd/weblogic-rdbms20-persistence-700.dtd'>
+<weblogic-rdbms-jar>
+  <weblogic-rdbms-bean>
+    <ejb-name>AccountEJB</ejb-name>
+    <data-source-name>oracle</data-source-name>
+    <table-map>
+      <table-name>Accounts</table-name>
+      <field-map>
+        <cmp-field>accno</cmp-field>
+        <dbms-column>acno</dbms-column>
+      </field-map>
+      <field-map>
+        <cmp-field>balance</cmp-field>
+        <dbms-column>curbal</dbms-column>
+      </field-map>
+      <field-map>
+        <cmp-field>accountType</cmp-field>
+        <dbms-column>atype</dbms-column>
+      </field-map>
+    </table-map>
+
+  </weblogic-rdbms-bean>
+  <create-default-dbms-tables>True</create-default-dbms-tables>
+</weblogic-rdbms-jar>
+
