@@ -1,40 +1,43 @@
-#include<bits/stdc++.h>
-using namespace std;
-int sum=0;
+#include <stdio.h>
+void printArray(int arr[], int size);
 
-int withoutLoop(int n, int i) {
-    if(i<=n) {
-        sum += i;
-        withoutLoop(n, i+1);
-    }
-    else {
-        return sum;
-    }
+void swap(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
 }
 
-void method2() {
-	int n, i=1, sum=0;
-    cout<<endl<<"Enter a number: ";
-    cin>>n;
+void bubbleSort(int arr[], int n)
+{
+    int i, j, swapp = 0;
+    for (i = 0; i < n - 1; i++)
+    {
 
-    repeating:
-    if(i<=n) {
-        sum += i;
-        i++;
-        goto repeating;
+        for (j = 0; j < n - i - 1; j++)
+        {
+
+            if (arr[j] > arr[j + 1])
+            {
+                swap(&arr[j], &arr[j + 1]);
+                swapp++;
+            }
+        }
     }
-    else {
-        cout<<endl<<"The sum of the numbers between 1 and "<<n<<" is: "<<sum;
-    }
-    return;
+    printf("Array sorted in: %d swaps.", swapp);
+    printf("First Element: %d.", arr[0]);
+    printf("Last Element: %d.", arr[n]);
 }
 
-int main() {
-    int n, i=1, sum=0;
-    cout<<"Enter a number: ";
-    cin>>n;
-    //method-1
-    cout<<endl<<"The sum of the numbers between 1 and "<<n<<" is: "<<withoutLoop(n, i);
-    //method-2
-	method2();  
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    bubbleSort(arr, n);
+    return 0;
 }
